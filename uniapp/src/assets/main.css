@@ -1,0 +1,5 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 核心：padding 不影响元素总宽度 */
+}

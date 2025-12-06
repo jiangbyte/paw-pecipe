@@ -1,0 +1,42 @@
+package io.jiangbyte.app.base.system.dict.dto;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import java.io.Serial;
+
+/**
+* @author Charlie Zhang
+* @version v1.0
+* @date 2025-11-25
+* @description 系统字典 编辑参数
+*/
+@Data
+@Schema(name = "SysDict", description = "系统字典 编辑参数")
+public class SysDictDto implements Serializable {
+    @Serial
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "主键ID")
+    private String id;
+
+    @Schema(description = "字典类型")
+    private String dictType;
+
+    @Schema(description = "类型标签")
+    private String typeLabel;
+
+    @Schema(description = "字典值")
+    private String dictValue;
+
+    @Schema(description = "字典标签")
+    private String dictLabel;
+
+    @Schema(description = "排序号")
+    private Integer sort;
+
+}

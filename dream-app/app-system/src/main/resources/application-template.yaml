@@ -1,0 +1,129 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/dream_db?serverTimezone=GMT%2B8&characterEncoding=UTF-8
+    username: 123123
+    password: 123123
+
+  data:
+    redis:
+      database: 1
+      host: localhost
+      port: 6379
+      # username: root
+      password: 123456
+      timeout: 10s
+      lettuce:
+        pool:
+          max-active: 200
+          max-wait: -1ms
+          max-idle: 10
+          min-idle: 0
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000
+      cache-null-values: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: 123456
+    virtual-host: /
+
+  ai:
+    dashscope:
+      api-key:
+      chat:
+        options:
+          model: qwen-plus
+          temperature: 0.4
+
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: xxxx@qq.com
+    password: xxxx
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+app:
+  email:
+    from: xxxx@qq.com
+    nickname: Galaxy系统
+    reset-url-prefix: xxxxxxx
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  token-style: random-64
+  jwt-secret-key: asdasdasifhueuiwyurfewbfjsdafjk
+  timeout: 2592000
+  active-timeout: -1
+  is-concurrent: true
+  is-share: false
+  is-log: true
+  is-read-cookie: false
+  is-print: false
+  alone-redis:
+    database: 2
+    host: localhost
+    port: 6379
+    password: 123456
+    timeout: 10s
+
+mybatis-plus:
+  mapper-locations: classpath*:io/jiangbyte/**/xml/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    local-cache-scope: session
+    cache-enabled: true
+  global-config:
+    db-config:
+      id-type: assign_id
+      logic-delete-field: is_deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+
+easy-trans:
+  is-enable-redis: true
+  is-enable-global: true
+  is-enable-tile: true
+  dict-use-redis: true
+  is-enable-custom-rpc: false
+  is-enable-map-result: false
+  db-type: mysql
+  mp-new: true
+
+
+# 临时文件目录
+java:
+  io:
+    tmpdir=/tmp
+
+#logging:
+#  level:
+#    org.dromara.trans.service.impl.SimpleTransService: ERROR

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.jiangbyte.app.modules.system.menu.mapper.SysMenuMapper">
+
+    <select id="selectMenusByAccountId" resultType="io.jiangbyte.app.base.system.menu.entity.SysMenu">
+        SELECT DISTINCT sm.*
+        FROM sys_menu sm
+                 JOIN auths_role_menu arm ON sm.id = arm.menu_id
+                 JOIN auths_account_role aar ON arm.role_id = aar.role_id
+        WHERE aar.account_id = #{accountId}
+          AND sm.is_deleted = 0
+        ORDER BY sm.sort ASC, sm.id ASC
+    </select>
+
+</mapper>

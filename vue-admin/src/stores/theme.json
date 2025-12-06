@@ -1,0 +1,64 @@
+{
+  "common": {
+    "primaryColor": "#0063ff",
+    "primaryColorHover": "#3382ff",
+    "primaryColorPressed": "#0059e6",
+    "primaryColorSuppl": "#3382ff",
+    "textColorBase": "#1d2129",
+    "textColorSecondary": "#4e5969",
+    "textColorTertiary": "#86909c",
+    "textColorQuaternary": "#c9cdD4",
+    "borderRadius": "8px",
+    "borderRadiusSmall": "4px",
+    "borderRadiusLarge": "12px",
+    "boxShadow": "0 2px 12px 0 rgba(0, 0, 0, 0.08)",
+    "boxShadowMedium": "0 4px 20px 0 rgba(0, 0, 0, 0.12)",
+    "boxShadowLarge": "0 8px 30px 0 rgba(0, 0, 0, 0.16)",
+    "transitionDuration": "0.25s",
+    "transitionDurationFast": "0.15s"
+  },
+  "Flex": {
+    "gapMedium": "16px 16px",
+    "gapSmall": "8px 8px",
+    "gapLarge": "24px 24px"
+  },
+  "LoadingBar": {
+    "height": "3px",
+    "color": "#0063ff"
+  },
+  "Button": {
+    "borderRadius": "8px",
+    "fontWeight": "500",
+    "padding": "8px 16px",
+    "paddingLarge": "12px 20px",
+    "paddingSmall": "4px 12px"
+  },
+  "Input": {
+    "borderRadius": "8px",
+    "padding": "10px 14px",
+    "borderColor": "#d0d3d9",
+    "borderColorHover": "#86909c",
+    "borderColorFocus": "#0063ff"
+  },
+  "Card": {
+    "borderRadius": "12px",
+    "padding": "20px",
+    "boxShadow": "0 2px 12px 0 rgba(0, 0, 0, 0.06)"
+  },
+  "Tag": {
+    "borderRadius": "6px",
+    "padding": "4px 10px"
+  },
+  "Select": {
+    "borderRadius": "8px",
+    "menuRadius": "8px"
+  },
+  "Tooltip": {
+    "borderRadius": "6px",
+    "boxShadow": "0 4px 16px rgba(0, 0, 0, 0.1)"
+  },
+  "Badge": {
+    "borderRadius": "12px",
+    "padding": "0 6px"
+  }
+}

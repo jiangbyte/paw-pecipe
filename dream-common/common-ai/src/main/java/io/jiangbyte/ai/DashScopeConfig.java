@@ -1,0 +1,62 @@
+package io.jiangbyte.ai;
+
+import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
+import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
+import lombok.RequiredArgsConstructor;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+
+/**
+ * @author Charlie Zhang
+ * @version v1.0
+ * @date 30/06/2025
+ * @description AI 配置
+ */
+@Configuration
+@RequiredArgsConstructor
+public class DashScopeConfig {
+    private final Environment env;
+
+    private static final int MAX_MESSAGES = 100;
+
+    @Bean
+    public DashScopeApi dashScopeApi() {
+        return DashScopeApi.builder().apiKey(env.getProperty("spring.ai.dashscope.api-key")).build();
+    }
+
+    @Bean
+    public ChatClient chatClient(ChatClient.Builder builder) {
+        MessageChatMemoryAdvisor messageChatMemoryAdvisor = MessageChatMemoryAdvisor.builder(
+                MessageWindowChatMemory
+                        .builder()
+                        .chatMemoryRepository(new InMemoryChatMemoryRepository()) // 内存存储
+                        .maxMessages(MAX_MESSAGES)
+                        .build()
+        ).build();
+
+//        DashScopeDocumentRetriever dashScopeDocumentRetriever = new DashScopeDocumentRetriever(
+//                dashScopeApi(),
+//                DashScopeDocumentRetrieverOptions
+//                        .builder()
+//                        .withIndexName(llmProperties.getExternalKnowledgeBase().getIndexName())
+//                        .build());
+//        DocumentRetrievalAdvisor documentRetrievalAdvisor = new DocumentRetrievalAdvisor(dashScopeDocumentRetriever);
+
+        DashScopeChatOptions dashScopeChatOptions = DashScopeChatOptions
+                .builder()
+                .withTopP(0.7)
+                .build();
+
+        return builder
+//                .defaultSystem(llmProperties.getPrompts().getDefaultPrompt())
+                .defaultAdvisors(new SimpleLoggerAdvisor(), messageChatMemoryAdvisor)
+                .defaultOptions(dashScopeChatOptions)
+                .build();
+    }
+}
